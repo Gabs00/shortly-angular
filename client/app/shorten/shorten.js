@@ -5,12 +5,15 @@ angular.module('shortly.shorten', [])
   $scope.link = {url:''};
   $scope.loading = false;
   $scope.isValid = true;
+  
   $scope.addLink = function(link){
-    $scope.loading = true;
-    Links.sendLink(link, function(response){
-      $scope.loading = false;
-      $scope.isValid = response;
-    });
+      $scope.loading = true;
+      if($scope.link.url.length <= 0){
+        Links.sendLink(link, function(response){
+          $scope.loading = false;
+          $scope.isValid = response;
+        });
+      }
     $scope.link.url = '';
   };
 });

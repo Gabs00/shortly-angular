@@ -10,7 +10,6 @@ angular.module('shortly.services', [])
     })
     .then(
       function(resp){
-        console.log('links gotten ', resp);
         callback(resp);
         return resp;
       }
@@ -23,11 +22,9 @@ angular.module('shortly.services', [])
       data: JSON.stringify({ url: link })
     })
     .then(function(resp){
-      console.log('success!', resp);
       callback(true);
     })
     .catch(function(resp){
-      console.log('failure!', resp);
       callback(false);
     });
   };
