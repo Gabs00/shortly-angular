@@ -6,10 +6,12 @@ angular.module('shortly.links', [])
   $scope.data = {};
   //Should have a data property
   //Should have getLinks property
-  console.log('available links ' + Links);
-  console.log('scope ', $scope);
   $scope.getLinks = function(){
-
+    Links.getLinks(function(response){
+      $scope.data.links = response.data;
+      console.log($scope.data);
+    });
   };
+  $scope.getLinks();
   //should call get links when the controller is loaded <- links.html
 });
